@@ -92,6 +92,10 @@ set pastetoggle=<C-_>
 " commands {
 command! -nargs=1 Count execute printf('%%s/%s//gn', escape(<q-args>, '/'))
         \ | normal! ``
+command! -bang -nargs=* -complete=file Make
+        \ call make#make(<bang>0,<q-args>)
+command! -nargs=? -complete=customlist,make#completion MakeStop
+        \ call make#stop(<f-args>)
 " }
 
 " autocommands {
@@ -99,6 +103,18 @@ augroup guess
     autocmd!
     autocmd StdinReadPost,FilterReadPost,FileReadPost,BufReadPost
             \ * call start#guess()
+augroup END
+
+augroup lint
+    autocmd!
+    autocmd FileType asm
+            \ setlocal makeprg=gcc\ -x\ assembler\ -fsyntax-only
+    autocmd FileType c
+            \ setlocal makeprg=gcc\ -S\ -x\ c\ -fsyntax-only\ -Wall
+    autocmd FileType cpp
+            \ setlocal makeprg=g++\ -S\ -x\ c++\ -fsyntax-only\ -Wall
+    autocmd BufWritePost *.S,*.c,*.cpp silent :Make! <afile> | silent redraw!
+    autocmd QuickFixCmdPost [^l]* cwindow
 augroup END
 
 augroup quickfix
