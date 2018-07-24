@@ -100,4 +100,25 @@ augroup quickfix
     autocmd BufEnter * if (winnr('$') == 1 && &buftype ==# 'quickfix') |
             \ bd | q | endif
 augroup END
+
+augroup git
+    autocmd!
+    autocmd BufNewFile,BufReadPost * call git#detect(expand('<amatch>:p:h'))
+    autocmd BufEnter * call git#detect(expand('%:p:h'))
+augroup END
+
+augroup status
+    autocmd!
+    autocmd VimEnter,WinEnter,BufWinEnter * call status#refresh()
+augroup END
+" }
+
+" highlight groups {
+highlight! User1 ctermfg=7 ctermbg=6 cterm=bold
+highlight! User2 ctermfg=7 ctermbg=3 cterm=bold
+highlight! User3 ctermfg=7 ctermbg=1 cterm=bold
+highlight! User4 ctermfg=7 ctermbg=2 cterm=bold
+highlight! User5 ctermfg=7 ctermbg=5 cterm=bold
+highlight! User6 ctermfg=7 ctermbg=8
+highlight! User7 ctermfg=7 ctermbg=9
 " }
