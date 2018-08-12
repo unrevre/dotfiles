@@ -139,6 +139,7 @@ augroup quickfix
             \ q :cclose<CR>:lclose<CR>
     autocmd BufEnter * if (winnr('$') == 1 && &buftype ==# 'quickfix') |
             \ bd | q | endif
+    autocmd FileType qf set nobuflisted
 augroup END
 
 augroup git
