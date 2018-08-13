@@ -126,9 +126,9 @@ augroup lint
     autocmd FileType asm
             \ let &l:makeprg='gcc -x assembler -fsyntax-only'
     autocmd FileType c
-            \ let &l:makeprg='gcc -S -x c -fsyntax-only -Wall'
+            \ let &l:makeprg='gcc -S -x c -fsyntax-only -Wall --std=c99'
     autocmd FileType cpp
-            \ let &l:makeprg='g++ -S -x c++ -fsyntax-only -Wall'
+            \ let &l:makeprg='g++ -S -x c++ -fsyntax-only -Wall --std=c++14'
     autocmd BufWritePost *.S,*.c,*.cpp silent :Make! <afile> | silent redraw!
     autocmd QuickFixCmdPost [^l]* cwindow
 augroup END
