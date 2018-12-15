@@ -109,9 +109,9 @@ set pastetoggle=<C-_>
 command! -nargs=1 Count execute printf('%%s/%s//gn', escape(<q-args>, '/'))
         \ | normal! ``
 command! -bang -nargs=* -complete=file Make
-        \ call make#make(<bang>0,<q-args>)
-command! -nargs=? -complete=customlist,make#completion MakeStop
-        \ call make#stop(<f-args>)
+        \ :silent call async#run(<bang>0, &makeprg, <f-args>)
+command! -nargs=0 -complete=file MakeStop
+        \ :silent call async#stop()
 " }
 
 " autocommands {
@@ -129,7 +129,7 @@ augroup lint
             \ let &l:makeprg='gcc -S -x c -fsyntax-only -Wall'
     autocmd FileType cpp
             \ let &l:makeprg='g++ -S -x c++ -fsyntax-only -Wall --std=c++14'
-    autocmd BufWritePost *.S,*.c,*.cpp silent :Make! <afile> | silent redraw!
+    autocmd BufWritePost *.S,*.c,*.cpp Make <afile>
     autocmd QuickFixCmdPost [^l]* cwindow
 augroup END
 
