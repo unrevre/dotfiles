@@ -18,6 +18,12 @@ if [ -t 1 ]; then
     bind '"\C-d"':shell-kill-word
 fi
 
+function up() {
+    if [[ $# -eq 0 || $1 -gt 0 ]]; then
+        cd $(eval printf '../'%.0s {1..$1}) && pwd;
+    fi
+}
+
 function get_git_branch() {
     if git --version &> /dev/null; then
         # On branches, this will return the branch name
