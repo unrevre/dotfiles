@@ -172,10 +172,10 @@ onoremap iz :normal viz<CR>
 " }}}
 
 " indent object {{{
-xnoremap <silent> ii :<C-u>call textobj#indent(line("'<"), line("'>"), 0)<CR>
-onoremap <silent> ii :<C-u>call textobj#indent(line('.'), line('.'), 0)<CR>
-xnoremap <silent> ai :<C-u>call textobj#indent(line("'<"), line("'>"), 1)<CR>
-onoremap <silent> ai :<C-u>call textobj#indent(line('.'), line('.'), 1)<CR>
+xnoremap ii :<C-u>call textobj#indent(0)<CR>
+onoremap ii :<C-u>call textobj#indent(0)<CR>
+xnoremap ai :<C-u>call textobj#indent(1)<CR>
+onoremap ai :<C-u>call textobj#indent(1)<CR>
 " }}}
 
 " comment object {{{
