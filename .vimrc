@@ -70,8 +70,6 @@ nnoremap ]t :tabn<CR>
 nnoremap [t :tabp<CR>
 
 nnoremap <silent> gb :<C-u>call util#break()<CR>
-nnoremap <silent> gk :<C-u>call util#next_indent(v:count1, -1)<CR>
-nnoremap <silent> gj :<C-u>call util#next_indent(v:count1, 1)<CR>
 nnoremap Q @q
 nnoremap Y y$
 
