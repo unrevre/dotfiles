@@ -62,6 +62,8 @@ nnoremap <silent> @R :set operatorfunc=util#repeat<CR>g@
 
 nnoremap ]b :bnext<CR>
 nnoremap [b :bprev<CR>
+nnoremap ]c :cnext<CR>
+nnoremap [c :cprev<CR>
 nnoremap ]l :lnext<CR>
 nnoremap [l :lprev<CR>
 nnoremap ]t :tabn<CR>
