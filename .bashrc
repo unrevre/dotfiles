@@ -10,9 +10,9 @@ PS1="\[\033[38;5;4m\]┌─[\u@\h] \[\033[38;5;2m\]\W\[\033[38;5;3m\]\$(get_git_
 
 alias dots='git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 
-stty -ixon
-
 if [ -t 1 ]; then
+    stty -ixon
+
     bind '"\C-f"':shell-forward-word
     bind '"\C-b"':shell-backward-word
     bind '"\C-d"':shell-kill-word
