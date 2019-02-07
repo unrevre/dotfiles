@@ -131,7 +131,7 @@ augroup lint
     autocmd FileType cpp
             \ let &l:makeprg='g++ -S -x c++ -fsyntax-only -Wall --std=c++14'
     autocmd BufWritePost *.S,*.c,*.cpp Make! <afile>
-    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost [^l]* cwindow | wincmd p
 augroup END
 
 augroup quickfix
