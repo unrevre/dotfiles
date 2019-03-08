@@ -26,6 +26,7 @@ function! git#detect(path) abort
         let path = dir . '/HEAD'
         if filereadable(path)
             let b:gitbranch_path = path
+            let b:gitdir_path = dir
         endif
     endif
 endfunction
