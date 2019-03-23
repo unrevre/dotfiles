@@ -2,6 +2,7 @@ execute pathogen#infect()
 
 " vim-commentary
 " vim-easyalign
+" vim-flame
 " vim-peekaboo
 " vim-surround
 " vim-tradewinds
@@ -233,6 +234,11 @@ highlight! User7 ctermfg=7 ctermbg=9
 " easyalign {{{
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+" }}}
+
+" flame {{{
+nmap gs <Plug>(FlameToggle)
+nmap gl <Plug>(FlameLine)
 " }}}
 
 " magit {{{
