@@ -29,14 +29,10 @@ function get_git_branch() {
         # On branches, this will return the branch name
         # On non-branches, (no branch)
         ref="$(git symbolic-ref HEAD 2> /dev/null | sed -e 's/refs\/heads\///')"
-        if [[ "$ref" != "" ]]; then
-            echo " :$ref:"
-        fi
+        [[ "$ref" != "" ]] && echo " :$ref:"
     fi
 }
 
 function get_virtualenv() {
-    if [[ -n "$VIRTUAL_ENV" ]]; then
-        echo " (${VIRTUAL_ENV##*/})"
-    fi
+    [[ -n "$VIRTUAL_ENV" ]] && echo " (${VIRTUAL_ENV##*/})"
 }
