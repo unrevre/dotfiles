@@ -103,8 +103,6 @@ vnoremap <silent> #
         \ escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
         \ gV
         \ :call setreg('"', old_reg, old_regtype)<CR>
-
-set pastetoggle=<C-_>
 " }}}
 
 " commands {{{
@@ -195,11 +193,13 @@ onoremap al :normal val<CR>
 " path object {{{
 xnoremap <silent> if
         \ :<C-u>
-        \ let epos = searchpos('\(\/\([0-9a-zA-Z_\-\.]\+\)\)\+', 'ceW', line('.')) <Bar>
+        \ let pr='\(\/\([0-9a-zA-Z_\-\.]\+\)\)\+' <Bar>
+        \ let l=line('.') <Bar>
+        \ let epos = searchpos(pr, 'ceW', l) <Bar>
         \ if epos == [0, 0] <Bar>
-        \ let epos = searchpos('\(\/\([0-9a-zA-Z_\-\.]\+\)\)\+', 'bceW', line('.')) <Bar>
+        \ let epos = searchpos(pr, 'bceW', l) <Bar>
         \ endif <Bar>
-        \ let spos = searchpos('\f\+', 'bcW', line('.')) <Bar>
+        \ let spos = searchpos('\f\+', 'bcW', l) <Bar>
         \ call textobj#select(spos, epos)<CR>
 onoremap <silent> if :normal vif<CR>
 " }}}
