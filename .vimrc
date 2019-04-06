@@ -74,6 +74,7 @@ nnoremap <silent> gb :<C-u>call util#break()<CR>
 nnoremap Q @q
 nnoremap Y y$
 
+nnoremap <leader>e :e <C-R>=expand("%:p:h").'/'<CR>
 nnoremap <leader>q :quit<CR>
 nnoremap <leader>u :update<CR>
 nnoremap <leader>w <C-w>
