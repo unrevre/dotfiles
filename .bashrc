@@ -2,6 +2,9 @@
 # ~/.bashrc
 #
 
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 export ARCHFLAGS="-arch x86_64"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
@@ -10,13 +13,11 @@ PS1="\[\033[38;5;4m\]┌─[\u@\h] \[\033[38;5;2m\]\W\[\033[38;5;3m\]\$(get_git_
 
 alias dots='git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 
-if [ -t 1 ]; then
-    stty -ixon
+stty -ixon
 
-    bind '"\C-f"':shell-forward-word
-    bind '"\C-b"':shell-backward-word
-    bind '"\C-d"':shell-kill-word
-fi
+bind '"\C-f"':shell-forward-word
+bind '"\C-b"':shell-backward-word
+bind '"\C-d"':shell-kill-word
 
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
