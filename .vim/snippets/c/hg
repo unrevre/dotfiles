@@ -1,0 +1,6 @@
+#ifndef {{+~toupper(substitute(expand('%:t'),'\.','_',"g"))+}}
+#define {{+~\~1+}}
+
+{{--}}
+
+#endif /* {{+~\~2+}} */

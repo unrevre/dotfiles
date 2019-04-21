@@ -1,0 +1,1 @@
+{{+~execute(":normal! Bhs_{\<esc>Ea}\<esc>l")+}}

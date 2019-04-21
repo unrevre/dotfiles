@@ -1,0 +1,10 @@
+\begin{figure}[hbt]
+  \centering
+  \includegraphics[width={{+0.45+}}\textwidth]{{{+Figure_001.pdf+}}}
+  \caption{
+    {{++}}
+  }
+  \label{fig:{{+fig1+}}}
+\end{figure}
+
+{{++}}

@@ -1,0 +1,23 @@
+helpmessage() {
+    echo -e "usage: $BASH_SOURCE{{++}}\n"
+    echo -e "    -h, --help      show (this) help message"
+}
+
+ARGS=()
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -h|--help)      helpmessage; exit 0 ;;
+        -o|--opt)       opt="$2"; shift 2 ;;
+        --opt=*)        opt="${1#*=}"; shift ;;
+        -t|--toggle)    toggle=1; shift ;;
+        -*)             echo -e "invalid option: $1\n"; exit 1 ;;
+        *)              ARGS+=("$1"); shift ;;
+    esac
+done
+
+set -- "${ARGS[@]}"
+
+[ $# -ne {{+1+}} ] && { echo -e "check arguments\n"; exit 1; }
+
+{{++}}
