@@ -6,6 +6,7 @@ execute pathogen#infect()
 " vim-peekaboo
 " vim-surround
 " vim-tradewinds
+" vim-usnip
 " vimagit
 
 " general settings {{{
