@@ -4,6 +4,7 @@ execute pathogen#infect()
 " vim-easyalign
 " vim-flame
 " vim-peekaboo
+" vim-qf
 " vim-surround
 " vim-tradewinds
 " vim-usnip
@@ -64,10 +65,6 @@ nnoremap <silent> @R :set operatorfunc=util#repeat<CR>g@
 
 nnoremap ]b :bnext<CR>
 nnoremap [b :bprev<CR>
-nnoremap ]c :cnext<CR>
-nnoremap [c :cprev<CR>
-nnoremap ]l :lnext<CR>
-nnoremap [l :lprev<CR>
 nnoremap ]t :tabn<CR>
 nnoremap [t :tabp<CR>
 
@@ -132,17 +129,6 @@ augroup lint
     autocmd FileType cpp
             \ let &l:makeprg='g++ -S -x c++ -fsyntax-only -Wall --std=c++14'
     autocmd BufWritePost *.S,*.c,*.cpp Make! <afile>
-    autocmd QuickFixCmdPre * let g:bufsave=bufname('%')
-    autocmd QuickFixCmdPost [^l]* cwindow | exec bufwinnr(g:bufsave) . 'wincmd w'
-augroup END
-
-augroup quickfix
-    autocmd!
-    autocmd BufWinEnter quickfix nnoremap <silent> <buffer>
-            \ q :cclose<CR>:lclose<CR>
-    autocmd BufEnter * if (winnr('$') == 1 && &buftype ==# 'quickfix') |
-            \ bd | q | endif
-    autocmd FileType qf set nobuflisted
 augroup END
 
 augroup git
@@ -259,5 +245,12 @@ let g:magit_git_cmd = 'git'
 
 " peekaboo {{{
 let g:peekaboo_window = 'vert bo 40new'
+" }}}
+
+" qf {{{
+nmap ]c <Plug>(qf_qf_next)
+nmap [c <Plug>(qf_qf_previous)
+nmap ]l <Plug>(qf_loc_next)
+nmap [l <Plug>(qf_loc_previous)
 " }}}
 " }}}
