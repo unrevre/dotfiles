@@ -40,6 +40,8 @@ set display+=lastline
 set scrolloff=1
 set fillchars=vert:\ ,fold:-
 set foldmethod=marker
+set numberwidth=5
+set relativenumber
 
 set hidden
 set sessionoptions-=options
@@ -216,6 +218,8 @@ highlight! User4 ctermfg=7 ctermbg=2 cterm=bold
 highlight! User5 ctermfg=7 ctermbg=5 cterm=bold
 highlight! User6 ctermfg=7 ctermbg=8
 highlight! User7 ctermfg=7 ctermbg=9
+
+highlight! LineNr ctermfg=12 ctermbg=8
 " }}}
 
 " plugin settings {{{
