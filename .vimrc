@@ -76,6 +76,7 @@ nnoremap Y y$
 
 nnoremap <leader>e :e <C-R>=expand("%:p:h").'/'<CR>
 nnoremap <leader>q :quit<CR>
+nnoremap <leader>t :set relativenumber!<CR>
 nnoremap <leader>u :update<CR>
 nnoremap <leader>w <C-w>
 nnoremap <leader>. :let @/=@"<cr>/<cr>cgn<c-r>.<esc>
