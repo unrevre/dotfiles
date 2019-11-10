@@ -125,13 +125,7 @@ augroup END
 
 augroup lint
     autocmd!
-    autocmd FileType asm
-            \ let &l:makeprg='gcc -x assembler -fsyntax-only'
-    autocmd FileType c
-            \ let &l:makeprg='gcc -S -x c -fsyntax-only -Wall'
-    autocmd FileType cpp
-            \ let &l:makeprg='g++ -S -x c++ -fsyntax-only -Wall --std=c++14'
-    autocmd BufWritePost *.S,*.c,*.cpp Make! <afile>
+    autocmd BufWritePost *.S,*.c,*.cpp,*.py Make!
 augroup END
 
 augroup git
