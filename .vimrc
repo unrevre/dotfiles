@@ -111,9 +111,9 @@ vnoremap <silent> #
 command! -nargs=1 Count execute printf('%%s/%s//gn', escape(<q-args>, '/'))
         \ | normal! ``
 command! -bang -nargs=* -complete=file Make
-        \ :silent call async#run(<bang>0, &makeprg, <f-args>)
-command! -nargs=0 -complete=file MakeStop
-        \ :silent call async#stop()
+        \ :silent call async#run(&makeprg, <f-args>)
+command! -nargs=0 -complete=file Stop
+        \ :silent call async#stop(<f-args>)
 " }}}
 
 " autocommands {{{

@@ -1,12 +1,12 @@
-func! s:finalize(scope, prefix, settitle) abort
-    let l:job = get(a:scope, 'async')
+func! s:finalize(scope, prefix) abort
+    let l:job = get(a:scope, 'job')
     if type(l:job) isnot v:t_dict | return | endif
     try
-        exe a:prefix.(l:job.jump ? '' : 'get').'file '.l:job.file
-        call a:settitle(l:job.cmd, l:job.nr)
+        exe a:prefix . 'file ' . l:job.file
     finally
-        unlet! a:scope.async
         call delete(l:job.file)
+        call filter(a:scope.ids, 'v:val != l:job.id')
+        unlet! a:scope.job
     endtry
 endfunc
 
@@ -22,46 +22,43 @@ func! s:escape(str) abort
     return s:slashescape(s:nameexpand(a:str))
 endfunc
 
-func! s:build(scope, prefix, settitle) abort
-    function! Run(nojump, cmd, ...) abort closure
-        if type(get(a:scope, 'async')) == v:t_dict
-            echoerr 'wait for existing job' | return
-        endif
+func! s:build(scope, prefix) abort
+    function! Run(cmd, ...) abort closure
+        let l:job = {'nr': win_getid(), 'file': tempname()}
 
-        let l:job = {}
         let l:cmd = a:cmd
-
-        call extend(l:job, {'nr': win_getid(), 'file': tempname(), 'jump': !a:nojump})
         let l:args = copy(a:000)
-        if l:cmd =~# '\$\*'
-            let l:job.cmd = substitute(l:cmd, '\$\*', join(l:args), 'g')
-        else
-            let l:job.cmd = join([s:escape(l:cmd)] + l:args)
-        endif
+        let l:job.cmd = (l:cmd =~# '\$\*'
+                    \? substitute(l:cmd, '\$\*', join(l:args), 'g')
+                    \: join([s:escape(l:cmd)] + l:args))
         echom l:job.cmd
-        let l:spec = [&shell, &shellcmdflag, l:job.cmd . printf(&shellredir, l:job.file)]
-        let l:Callback = {-> s:finalize(a:scope, a:prefix, a:settitle)}
 
+        let l:spec = [
+                    \   &shell,
+                    \   &shellcmdflag,
+                    \   l:job.cmd . printf(&shellredir, l:job.file)
+                    \]
+        let l:Callback = {-> s:finalize(a:scope, a:prefix)}
         let l:job.id = job_start(l:spec, {
-                    \   'in_io': 'null','out_io': 'null','err_io': 'null',
+                    \   'in_io': 'null', 'out_io': 'null', 'err_io': 'null',
                     \   'exit_cb': l:Callback
                     \ })
-        let a:scope['async'] = l:job
+        let a:scope.job = l:job
+
+        let l:ids = add(get(a:scope, 'ids', []), l:job.id)
+        let a:scope.ids = l:ids
     endfunc
 
-    func! Stop() abort closure
-        let l:job = get(a:scope, 'async')
-        if type(l:job) is v:t_dict
-            call job_stop(l:job.id)
-            unlet! a:scope['async']
-        endif
+    func! Stop(id) abort closure
+        call job_stop(a:id)
+        call filter(a:scope.ids, 'v:val != a:id')
     endfunc
 
     return { 'run': funcref('Run'), 'stop': funcref('Stop') }
 endfunc
 
-let s:qf = s:build(g:, 'c', {title, nr -> setqflist([], 'a', {'title': title})})
-let s:ll = s:build(w:, 'l', {title, nr -> setloclist(nr, [], 'a', {'title': title})})
+let s:qf = s:build(g:, 'c')
+let s:ll = s:build(w:, 'l')
 
 func! async#run(...) abort
     call call(s:qf.run, a:000)
