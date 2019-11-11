@@ -123,6 +123,11 @@ augroup guess
             \ * call start#guess()
 augroup END
 
+augroup makefile
+    autocmd!
+    autocmd FileType * call util#makefile()
+augroup END
+
 augroup lint
     autocmd!
     autocmd BufWritePost *.S,*.c,*.cpp,*.py Make!
