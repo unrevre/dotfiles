@@ -1,1 +1,1 @@
-\left\langle{{{++}}}\right\rangle{{++}}
+{{+~execute(":normal! Bi\\left\\langle{\<esc>Ea}\\right\\rangle\<esc>l")+}}

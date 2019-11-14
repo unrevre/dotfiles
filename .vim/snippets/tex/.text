@@ -1,1 +1,1 @@
-\text{{{++}}}{{++}}
+{{+~execute(":normal! Bi\\text{\<esc>Ea}\<esc>l")+}}

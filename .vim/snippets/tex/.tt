@@ -1,1 +1,1 @@
-\texttt{{{++}}}{{++}}
+{{+~execute(":normal! Bi\\texttt{\<esc>Ea}\<esc>l")+}}
