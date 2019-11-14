@@ -1,4 +1,4 @@
-class {{+placeholder+}} {
+class {{+name+}} {
   public:
     {{+~\~1+}}() { }
 

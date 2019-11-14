@@ -1,1 +1,1 @@
-std::unordered_map<{{+std::string+}}, {{+int+}}> {{++}}
+std::unordered_map<{{++}}, {{++}}>{{++}}
