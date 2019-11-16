@@ -1,1 +1,1 @@
-{{+~execute(":normal! Bi\\texttt{\<esc>Ea}\<esc>ll")+}}
+{{+~execute(":normal! 2Bi\\texttt{\<esc>Ea}\<esc>2l")+}}

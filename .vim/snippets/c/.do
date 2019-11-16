@@ -1,1 +1,1 @@
-{{+~execute(":normal! ^ido {\<cr>\<esc>o} while (\{\{++\}\});\<esc>k$")+}}
+{{+~execute(":normal! ^ido {\<cr>\<esc>o} while (\{\{++\}\});\<esc>k")+}}

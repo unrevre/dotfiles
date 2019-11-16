@@ -1,1 +1,1 @@
-{{+~execute(":normal! ^iwhile (\{\{++\}\}) {\<cr>\<esc>o}\<esc>k$")+}}
+{{+~execute(":normal! ^iwhile (\{\{++\}\}) {\<cr>\<esc>o}\<esc>k")+}}

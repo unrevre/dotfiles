@@ -1,1 +1,1 @@
-{{+~execute(":normal! ^iif (\{\{++\}\}) {\<cr>\<esc>o}\<esc>k$")+}}
+{{+~execute(":normal! ^iif (\{\{++\}\}) {\<cr>\<esc>o}\<esc>k")+}}
