@@ -1,1 +1,1 @@
-{{+~execute(":normal! Bhs^{\<esc>Ea}\<esc>l")+}}
+{{+~execute(":normal! Bhs^{\<esc>Ea}\<esc>ll")+}}

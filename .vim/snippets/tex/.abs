@@ -1,1 +1,1 @@
-{{+~execute(":normal! Bi\\abs{\<esc>Ea}\<esc>l")+}}
+{{+~execute(":normal! Bi\\abs{\<esc>Ea}\<esc>ll")+}}

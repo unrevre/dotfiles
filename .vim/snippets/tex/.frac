@@ -1,1 +1,1 @@
-{{+~execute(":normal! BBi\\frac{\<esc>Elcw}{\<esc>Ea}\<esc>l")+}}
+{{+~execute(":normal! BBi\\frac{\<esc>Elcw}{\<esc>Ea}\<esc>ll")+}}

@@ -1,1 +1,1 @@
-{{+~execute(":normal! Bi\\overline{\<esc>Ea}\<esc>l")+}}
+{{+~execute(":normal! Bi\\overline{\<esc>Ea}\<esc>ll")+}}
