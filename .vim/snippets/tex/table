@@ -4,11 +4,11 @@
     {{++}}
   }
   \begin{tabular}{lc}
-  \hline
-    {{+header+}}                        & {{++}}            \\
-  \hline
-    {{+entry+}}                         & {{++}}            \\
-  \hline
+    \hline
+    {{+header+}}        & {{++}}        \\
+    \hline
+    {{+entry+}}         & {{++}}        \\
+    \hline
   \end{tabular}
   \label{tab:{{+tab1+}}}
 \end{table}
