@@ -23,7 +23,9 @@ git config --global alias.st 'status'
 git config --global alias.su 'status -uno'
 git config --global alias.us 'reset HEAD --'
 
-git config --global alias.exp 'reflog expire --expire-unreachable=now'
+git config --global alias.exp 'reflog expire --expire=now \
+                                             --expire-unreachable=now \
+                                             --all'
 git config --global alias.gcp 'gc --prune=now'
 git config --global alias.red 'rebase --committer-date-is-author-date'
 git config --global alias.sup 'submodule update --init --recursive'
