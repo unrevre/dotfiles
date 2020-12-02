@@ -23,6 +23,11 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
 
+completions=(
+)
+
+for f in "${completions[@]}"; do [[ -r "$f" ]] && . "$f"; done
+
 function up() {
     if [[ $# -eq 0 || $1 -gt 0 ]]; then
         cd $(eval printf '../'%.0s {1..$1}) && pwd;
