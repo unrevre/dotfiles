@@ -13,3 +13,16 @@ function! util#makefile() abort
         let &l:makeprg = 'make'
     endif
 endfunction
+
+function! util#togglelint() abort
+    if exists('#lint#BufWritePost')
+        augroup lint
+            autocmd!
+        augroup END
+    else
+        augroup lint
+            autocmd!
+            autocmd BufWritePost *.S,*.c,*.cpp,*.py Make!
+        augroup END
+    endif
+endfunction
