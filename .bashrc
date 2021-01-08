@@ -8,6 +8,13 @@
 export ARCHFLAGS="-arch x86_64"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
+export LESS_TERMCAP_md=$'\e[01;34m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;31m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[01;32m'
+export LESS_TERMCAP_ue=$'\e[0m'
+
 PS1="\[\033[38;5;4m\]┌─[\u@\h] \[\033[38;5;2m\]\W\[\033[38;5;3m\]\$(get_git_branch)\n\
 \[\033[38;5;4m\]└─╼ $\[\033[0m\]\$(get_virtualenv) "
 
